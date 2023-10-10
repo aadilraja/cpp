@@ -1,0 +1,146 @@
+#include <iostream>
+
+
+using namespace std;
+
+class arr_operation
+{
+   private: 
+           int capacity=2;
+           int len=0;
+           int *arr=new int[capacity];
+
+      public:
+           
+           void push(int val)
+           { 
+            
+            if(len==capacity)
+            {
+                growArr();
+            }
+           
+                arr[len]=val;
+                len++;
+
+            
+           }
+           void growArr()
+           {
+            capacity*=2;
+            int *temp=new int[capacity];
+            for(int i{0};i<len+1;i++)
+            {
+                temp[i]=arr[i];
+
+                
+            }
+            delete [] arr;
+
+            arr=temp;
+            }
+
+
+            void pop(int index)
+            {
+                if(index>=len||index<0)
+                {
+                    cerr<<"index out of range!!";
+
+                }
+                else if (len>0)
+                {
+                    cerr<<"array doesnt have any elements!!";
+                    
+                }
+                
+                else
+                {
+                    int *temp=new int[len-1];
+                    for(int i{len-1};i>=0;i--)
+                    {
+                        if(i==index)
+                        {
+                            continue;
+                        }
+                        temp[i]=arr[i];
+
+                    }
+                    delete [] arr;
+                    arr=temp;
+
+
+                }
+
+            }
+
+
+
+
+
+
+            void display()
+            {
+            for (int i = 0; i < len; i++)
+            {
+                cout<<arr[i]<<"\t";
+            }
+            
+            }
+
+
+};
+
+
+int main() 
+{ 
+    arr_operation ar;
+    char s;
+    int v;
+
+    while( s!='Y')
+    {   
+        int ch;
+        cout<<"\nenter the choice:";
+        cin>>ch;
+        switch (ch)
+        {
+        case 1:
+        cout<<"enter the element to add to array:";
+        cin>>v;
+        ar.push(v);
+        ar.display();
+            break;
+
+        case 2:
+         cout<<"enter the index to remove element";
+         cin>>v;
+         ar.pop(v);
+         ar.display();
+           break;
+
+       
+         
+         
+
+        
+       
+        cout<<"\nexit:-Y/N\n";
+        cin>>s;
+           
+        }
+       
+
+
+         
+         
+
+    }
+
+
+   
+
+    
+    
+    return 0;
+}
