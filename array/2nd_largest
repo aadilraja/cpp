@@ -1,0 +1,45 @@
+#include <iostream>
+
+
+using namespace std;
+int second_larg(int arr[],int s)
+{
+    
+    int large{0},second_larg{0};
+    for(size_t i{0};i<s;i++)
+    {
+        if(arr[i]>large){
+            second_larg=large;
+            large=arr[i];
+        }
+
+    }
+    return second_larg;
+}
+
+
+
+int main() {
+    int size;
+    cout<<"enter the size:";
+    cin>>size;
+    int *arr=new int[size];
+    cout<<"enter element of array:";
+    for (size_t i = 0; i <size; i++)
+    {
+        cin>>arr[i];
+    }
+   cout<< second_larg(arr,size);
+
+    
+   
+    
+    
+    
+
+
+
+
+
+    return 0;
+}
